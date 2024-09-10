@@ -3,12 +3,10 @@ import { useState, useEffect } from "react";
 
 const ListaTareas = () => {
   const [taskValue, setTaskValue] = useState("");
-  const [taskToDo, setTaskToDo] = useState([
-    "pasear al perro",
-    "estudiar javascript",
-    "lavar los platos",
-    "comer",
-  ]);
+  const [taskToDo, setTaskToDo] = useState(()=>{
+    const savedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    return savedTasks
+  })
 
   const handleSubmit = (e) => {
     e.preventDefault();
